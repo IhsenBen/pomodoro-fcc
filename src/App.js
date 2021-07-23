@@ -25,6 +25,21 @@ function App() {
     
 }, [sessionLengthInSeconds]);
 
+useEffect(() => {
+  
+if (timeLeft === 0) {
+  audioElement.current.play()
+  if(currentSessionType ==='Session'){
+    setCurrentSessionType('Break')
+    setTimeLeft(breakLengthInSeconds)
+  } else if (currentSessionType ==='Break'){
+    setCurrentSessionType('Session');
+    setTimeLeft(sessionLengthInSeconds);
+
+  }
+}
+}, [breakLengthInSeconds, currentSessionType, sessionLengthInSeconds, timeLeft ]);
+
 
   const decrementBreakLengthByOneMinute = () => {
     const newBreakLengthInSeconds = breakLengthInSeconds - 60;
@@ -63,26 +78,7 @@ function App() {
         } else {
       
           const newIntervalId = setInterval(() => {
-            setTimeLeft(prevTimeLeft => {
-              const newTimeLeft = prevTimeLeft - 1;
-              if (newTimeLeft >= 0) {
-                console.log("sup I'm just testing the time", newTimeLeft );
-                return newTimeLeft;
-              }
-            audioElement.current.play();
-              if (currentSessionType === 'Session') {
-                setCurrentSessionType('Break');
-                
-
-                return breakLengthInSeconds;
-              }
-              else if (currentSessionType === 'Break') {
-                setCurrentSessionType('Session');
-               
-                return sessionLengthInSeconds;
-              }
-            });
-          }, 1000); // TODO: turn back into 1000
+            setTimeLeft(prevTimeLeft => prevTimeLeft -1)}, 1000); // TODO: turn back into 1000
           setIntervalId(newIntervalId);
         }
       };
