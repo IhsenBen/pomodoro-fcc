@@ -7,7 +7,7 @@ const Break = ({
   incrementBreakLengthByOneMinute,
   decrementBreakLengthByOneMinute,
 }) => {
-  const breakLengthInMinutes = moment.duration(breakLengthInSeconds, 's').minutes();
+  const breakLengthInMinutes = moment.duration(breakLengthInSeconds, 's').asMinutes();
   return (
     <div>
       <p id="break-label">Break</p>
