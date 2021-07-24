@@ -11,7 +11,7 @@ const Break = ({
   return (
     <div>
       <p id="break-label">Break</p>
-      <p id="break-length">{breakLengthInMinutes}</p>
+      <p id="break-length" className="odometer">{breakLengthInMinutes}</p>
       <button id="break-increment" onClick={incrementBreakLengthByOneMinute}>
         +
       </button>

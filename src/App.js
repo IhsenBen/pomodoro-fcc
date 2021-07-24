@@ -104,7 +104,7 @@ if (timeLeft === 0) {
     <div className="App">
  
 
-      <Break
+      <Break 
         breakLengthInSeconds={breakLengthInSeconds}
         incrementBreakLengthByOneMinute={incrementBreakLengthByOneMinute}
         decrementBreakLengthByOneMinute={decrementBreakLengthByOneMinute}

@@ -3,6 +3,7 @@ import moment from 'moment';
 import momentDurationFormatSetup from 'moment-duration-format';
 import React from 'react';
 
+
 momentDurationFormatSetup(moment);
 
 const TimeLeft = ({
@@ -13,21 +14,23 @@ const TimeLeft = ({
   timerLabel,
 }) => {
   const formattedTimeLeft = moment.duration(timeLeft, 's').format('mm:ss', { trim: false });
+  
   return (
-    <div className="flex flex-col justify-evenly items-center w-64 h-64 bg-red-600 rounded-full">
+    <div className="">
       <p className="text-red-900 text-2xl" id="timer-label">
         {timerLabel}
       </p>
-      <p className="font-clock text-4xl font-bold" id="time-left">
+      <p className="odometer" id="time-left">
         {formattedTimeLeft}
       </p>
       <button
+      className="kbc-button kbc-button-lg"
         id="start_stop"
         onClick={handleStartStopClick}
       >
         {startStopButtonLabel}
       </button>
-      <button
+      <button className="kbc-button kbc-button-lg"
       
         id="reset"
         onClick={handleResetButtonClick}
