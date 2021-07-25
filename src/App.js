@@ -10,6 +10,7 @@ import Session from './components/Session';
 import TimeLeft from './components/TimeLeft';
 import { useEffect} from 'react';
 import { useRef } from 'react';
+import soundfile from './media/BeepSound.wav'
 
 
 
@@ -138,7 +139,7 @@ if (timeLeft === 0) {
     </div>
      
       <audio id="beep" ref={audioElement}>
-      <source src="http://www.peter-weinberg.com/files/1014/8073/6015/BeepSound.wav" type="audio/wav" />
+      <source src={soundfile} type="audio/wav" />
       </audio>
     </div>
   );
