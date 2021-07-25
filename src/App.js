@@ -112,7 +112,7 @@ if (timeLeft === 0) {
        <h1 className="title">Pomdoro Clock</h1>
   
        
-       <a  className="credit" href="https://www.ihsen.dev/"  target="_blank">Made By Ihsen</a>
+       <a  className="credit" href="https://www.ihsen.dev/" rel="noopener noreferrer"  target="_blank">Made By Ihsen</a>
 
         <div className="Pomodoro">
     <Break 
