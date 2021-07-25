@@ -9,15 +9,22 @@ const Break = ({
 }) => {
   const breakLengthInMinutes = moment.duration(breakLengthInSeconds, 's').asMinutes();
   return (
-    <div>
-      <p id="break-label">Break</p>
-      <p id="break-length" className="odometer">{breakLengthInMinutes}</p>
-      <button id="break-increment" onClick={incrementBreakLengthByOneMinute}>
-        +
+    <div className="break" >
+      <h2 className="controlerTitle"  id="break-label">Break</h2>
+      <div className="breakDisplay">
+        <p className="breaktime" id="break-length" >{breakLengthInMinutes}</p>
+      </div>
+      
+    
+
+      <div className="frameController">
+     <button className="btnController" id="break-increment" onClick={incrementBreakLengthByOneMinute}>
+       <i>+</i> 
       </button>
-      <button id="break-decrement" onClick={decrementBreakLengthByOneMinute}>
+      <button className="btnController" id="break-decrement" onClick={decrementBreakLengthByOneMinute}>
         -
       </button>
+     </div>
     </div>
   );
 };

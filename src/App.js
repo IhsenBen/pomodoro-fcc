@@ -1,7 +1,10 @@
 // App.js
 
-import React, { useState } from 'react';
+
+
 import './App.css';
+import React, { useState } from 'react';
+
 import Break from './components/Break';
 import Session from './components/Session';
 import TimeLeft from './components/TimeLeft';
@@ -101,29 +104,41 @@ if (timeLeft === 0) {
       };
 
   return (
+
     <div className="App">
  
+       
+      
+       <h1 className="title">Pomdoro Clock</h1>
+  
+       
+       <a  className="credit" href="https://www.ihsen.dev/"  target="_blank">Made By Ihsen</a>
 
-      <Break 
+        <div className="Pomodoro">
+    <Break 
         breakLengthInSeconds={breakLengthInSeconds}
         incrementBreakLengthByOneMinute={incrementBreakLengthByOneMinute}
         decrementBreakLengthByOneMinute={decrementBreakLengthByOneMinute}
       />
-         <TimeLeft
+      
+      <TimeLeft
          handleResetButtonClick={handleResetButtonClick}
         handleStartStopClick={handleStartStopClick}
         timerLabel={currentSessionType}
         startStopButtonLabel={isStarted ? 'Stop' : 'Start'}
         timeLeft={timeLeft}
       />
+   
+      
       <Session
         sessionLengthInSeconds={sessionLengthInSeconds}
         incrementSessionLengthByOneMinute={incrementSessionLengthByOneMinute}
         decrementSessionLengthByOneMinute={decrementSessionLengthByOneMinute}
       />
+    </div>
      
       <audio id="beep" ref={audioElement}>
-      <source src="http://tastyspleen.net/~quake2/baseq2/sound/misc/firebell.wav" type="audio/wav" />
+      <source src="http://www.peter-weinberg.com/files/1014/8073/6015/BeepSound.wav" type="audio/wav" />
       </audio>
     </div>
   );

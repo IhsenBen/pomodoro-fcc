@@ -1,38 +1,249 @@
-.App {
+@font-face {
+  font-family: 'digital-7';
+  src: url('media/digital-7.ttf');
+}
+
+
+.Pomodoro  {
+
+
+  background: #e0e5ec;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+ }
+
+.header{
   text-align: center;
 }
-
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.title{
+  text-align: center;
+  font-size: 5.8em;
+ 
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.credit{
   display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  font-size: 2em;
+  padding-bottom: 100px;
+}
+
+div.clock { margin: 5px 0; }
+
+div.clock div {
+  display: inline-block;
+  position: relative;
+}
+
+div.clock div p {
+  padding: 15px;
+  font-size:10vw;
+  position: relative;
+  z-index: 100;
+}
+
+
+div.clock .placeholder {
+  padding: 15px;
+  color: #333030;
+  position: absolute;
+  top: 0;
+  z-index: 50;
+}
+
+.clock{
+  width: 70vw;
+   height: 20vw;
+  border-radius: 2vw;
+ color: #ffffff;
+ display: flex;
+ justify-content: center;
+ align-items: center;
+ background-color: #000000;
+ font-family: 'digital-7', sans-serif;
+ box-shadow: 0 2vw 4vw -1vw black;
+ 
+}
+.timerLabel{
+ margin-left: 15px;
+}
+.controllers{
+
+  padding: 50px;
+  display: flex;
+  gap: 30px;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  padding-left: 50px;
 }
 
-.App-link {
-  color: #61dafb;
+.startRes {
+  cursor: pointer;
+  margin-left: 5px;
+  margin-bottom: 5px;
+  text-shadow: 0 -2px 0 #4f7cac;
+  box-sizing: border-box;
+  font-size: 1em;
+  font-family: Helvetica, Arial, Sans-Serif;
+  text-decoration: none;
+  font-weight: bold;
+  color: #F4FAFF;
+  height: 30px;
+  line-height: 30px;
+  padding: 0 32.5px;
+  display: inline-block;
+  width: 160px;
+  background-image: linear-gradient(to right top, #ee6c4d, #eb6544, #e85d3c, #e45633, #e14e2a);
+  border-radius: 5px;
+  border-top: 1px solid #c8e2d3;
+  border-bottom: 1px solid #c2dece;
+  top: 1px;
+  transition: all 0.06s ease-out;
+  position: relative;
+}
+.startRes:visited {
+  color: #5485b9;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.startRes:hover {
+  background-image: linear-gradient(to right top, #4f7cac, #5485b9, #598ec6, #5f97d3, #64a0e0);
+}
+
+.startRes:active {
+  top: 2px;
+  color: #DEE7E7;
+}
+.startRes:active:before {
+  top: 0;
+  box-shadow: 0 3px 3px rgba(0, 0, 0, 0.7), 0 3px 9px rgba(0, 0, 0, 0.2);
+}
+
+.startRes:before {
+  display: inline-block;
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  z-index: -1;
+  top: 3px;
+  border-radius: 5px;
+  height: 30px;
+  background: linear-gradient(to top, #e85d3c 0%, #e45633 6px);
+  transition: all 0.078s ease-out;
+  box-shadow: 0 1px 0 2px rgba(0, 0, 0, 0.3), 0 5px 2.4px rgba(0, 0, 0, 0.5), 0 10.8px 9px rgba(0, 0, 0, 0.2);
+}
+
+
+
+/* controllers minus and plus */
+
+.frameController{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+ min-height: 100px;
+  width: 150px;
+  position: relative;
+   box-shadow:
+   -7px -7px 20px 0px #fff9,
+   -4px -4px 5px 0px #fff9,
+   7px 7px 20px 0px #0002,
+   4px 4px 5px 0px #0001,
+   inset 0px 0px 0px 0px #fff9,
+   inset 0px 0px 0px 0px #0001,
+   inset 0px 0px 0px 0px #fff9,        inset 0px 0px 0px 0px #0001;
+ transition:box-shadow 0.6s cubic-bezier(.79,.21,.06,.81);
+   border-radius: 10px;
+}
+
+.btnController{
+  height: 40px;
+  width: 50px;
+  border-radius: 4px;
+  background: #e0e5ec;
+  display: flex;
+  font-weight: bolder;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  -webkit-tap-highlight-color: rgba(255, 255, 255, 0);
+  -webkit-tap-highlight-color: transparent;
+  box-shadow:
+   -7px -7px 20px 0px #fff9,
+   -4px -4px 5px 0px #fff9,
+   7px 7px 20px 0px #0002,
+   4px 4px 5px 0px #0001;
+ transition:box-shadow 0.6s cubic-bezier(.79,.21,.06,.81);
+  font-size: 26px;
+  color: black;
+  text-decoration: none;
+}
+
+
+.btnController:hover{
+background: radial-gradient(circle,  #0ff 0%, #e0e5ec 60%);
+  color: rgba(102,102,102,.5); 
+
+}
+
+.btnController:active {
+  box-shadow:  4px 4px 6px 0 rgba(255,255,255,.5),
+              -4px -4px 6px 0 rgba(116, 125, 136, .2), 
+    inset -4px -4px 6px 0 rgba(255,255,255,.5),
+    inset 4px 4px 6px 0 rgba(116, 125, 136, .3);
+}
+
+
+#session-label, #break-label{
+  text-align: center;
+  font-size: 3.2em;
+
+} 
+
+.break, .session{
+  justify-content: center;
+  text-align: center;
+  padding: 50px;
+  margin: 50px;
+  width: 30vw;
+  height: 15vw;
+  gap: 80px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+
+
+
+.sessionDisplay, .breakDisplay{
+  font-size: 80px;
+
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+  height: 80px;
+  width: 150px;
+  position: relative;
+   box-shadow:
+   -7px -7px 20px 0px #fff9,
+   -4px -4px 5px 0px #fff9,
+   7px 7px 20px 0px #0002,
+   4px 4px 5px 0px #0001,
+   inset 0px 0px 0px 0px #fff9,
+   inset 0px 0px 0px 0px #0001,
+   inset 0px 0px 0px 0px #fff9,        inset 0px 0px 0px 0px #0001;
+ transition:box-shadow 0.6s cubic-bezier(.79,.21,.06,.81);
+   border-radius: 10px;
+}
+
+
+@keyframes colorchange {
+	to {filter: hue-rotate(360deg);}
 }

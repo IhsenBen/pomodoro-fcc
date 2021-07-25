@@ -17,25 +17,10 @@
     -->
 
     <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
-    <link
-      rel="stylesheet"
-      href="/node_modules/keyboard-css/dist/css/main.min.css"
-    />
+
     <!-- <link rel="stylesheet" href="http://github.hubspot.com/odometer/themes/odometer-theme-car.css" /> -->
 
-    <script>
-      var el = document.querySelector(".odometer");
 
-      od = new Odometer({
-        // Any option (other than auto and selector) can be passed in here
-        format: "d",
-        theme: "digital",
-      });
-
-      od.update(555);
-      // or
-      el.innerHTML = 555;
-    </script>
     <!--
       Notice the use of %PUBLIC_URL% in the tags above.
       It will be replaced with the URL of the `public` folder during the build.
@@ -45,7 +30,7 @@
       work correctly both with client-side routing and a non-root public URL.
       Learn how to configure a non-root public URL by running `npm run build`.
     -->
-    <title>React App</title>
+    <title>Pomodoro Clock</title>
   </head>
   <body>
     <noscript>You need to enable JavaScript to run this app.</noscript>
