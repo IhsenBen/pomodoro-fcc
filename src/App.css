@@ -290,3 +290,18 @@ flex-direction: column;
   align-items: center;
   margin: 0 auto;
 }
+
+@media only screen and (max-width: 600px) {
+  .Pomodoro {flex-direction: column; }
+ .break, .session{
+   padding: 200px;
+ }
+ .frameController{
+   width: 200px;
+ }
+.btnController{
+  height: 50px;
+  width: 15vw;
+  margin: 0px;
+}
+}
