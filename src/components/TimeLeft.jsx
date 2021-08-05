@@ -3,7 +3,6 @@ import momentDurationFormatSetup from "moment-duration-format";
 import React from "react";
 import "../App.css";
 
-
 momentDurationFormatSetup(moment);
 
 const TimeLeft = ({
@@ -19,7 +18,6 @@ const TimeLeft = ({
 
   return (
     <div className="clock">
-          
       {/* <p > 
         <Flip value={formattedTimeLeft} /> 
         </p> */}
@@ -34,27 +32,23 @@ const TimeLeft = ({
         </p>
         <p className="placeholder">88:88</p>
       </div>
-<div className="controllers">
-<button
-        className="startRes"
-        id="start_stop"
-        onClick={handleStartStopClick}
-      >
-        {startStopButtonLabel}
-      </button>
-      <button
-        className="startRes"
-        id="reset"
-        onClick={handleResetButtonClick}
-      >
-        Reset
-      </button>
-</div>
-    
-
-
+      <div className="controllers">
+        <button
+          className="startRes"
+          id="start_stop"
+          onClick={handleStartStopClick}
+        >
+          {startStopButtonLabel}
+        </button>
+        <button
+          className="startRes"
+          id="reset"
+          onClick={handleResetButtonClick}
+        >
+          Reset
+        </button>
+      </div>
     </div>
-    
   );
 };
 

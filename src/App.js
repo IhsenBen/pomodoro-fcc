@@ -1,49 +1,46 @@
 // App.js
 
+import "./App.css";
+import React, { useState } from "react";
 
-
-import './App.css';
-import React, { useState } from 'react';
-
-import Break from './components/Break';
-import Session from './components/Session';
-import TimeLeft from './components/TimeLeft';
-import { useEffect} from 'react';
-import { useRef } from 'react';
-import soundfile from './media/BeepSound.wav'
-
-
+import Break from "./components/Break";
+import Session from "./components/Session";
+import TimeLeft from "./components/TimeLeft";
+import { useEffect } from "react";
+import { useRef } from "react";
+import soundfile from "./media/BeepSound.wav";
 
 function App() {
   const audioElement = useRef(null);
   const [intervalId, setIntervalId] = useState(null);
-  const [currentSessionType, setCurrentSessionType] = useState('Session'); 
+  const [currentSessionType, setCurrentSessionType] = useState("Session");
   const [breakLengthInSeconds, setBreakLengthInSeconds] = useState(300);
   const [sessionLengthInSeconds, setSessionLengthInSeconds] = useState(60 * 25);
-  const [timeLeft, setTimeLeft] = useState (sessionLengthInSeconds);
+  const [timeLeft, setTimeLeft] = useState(sessionLengthInSeconds);
 
   useEffect(() => {
     setTimeLeft(sessionLengthInSeconds);
-    
-       console.log('test', sessionLengthInSeconds);
-    
-}, [sessionLengthInSeconds]);
 
-useEffect(() => {
-  
-if (timeLeft === 0) {
-  audioElement.current.play()
-  if(currentSessionType ==='Session'){
-    setCurrentSessionType('Break')
-    setTimeLeft(breakLengthInSeconds)
-  } else if (currentSessionType ==='Break'){
-    setCurrentSessionType('Session');
-    setTimeLeft(sessionLengthInSeconds);
+    console.log("test", sessionLengthInSeconds);
+  }, [sessionLengthInSeconds]);
 
-  }
-}
-}, [breakLengthInSeconds, currentSessionType, sessionLengthInSeconds, timeLeft ]);
-
+  useEffect(() => {
+    if (timeLeft === 0) {
+      audioElement.current.play();
+      if (currentSessionType === "Session") {
+        setCurrentSessionType("Break");
+        setTimeLeft(breakLengthInSeconds);
+      } else if (currentSessionType === "Break") {
+        setCurrentSessionType("Session");
+        setTimeLeft(sessionLengthInSeconds);
+      }
+    }
+  }, [
+    breakLengthInSeconds,
+    currentSessionType,
+    sessionLengthInSeconds,
+    timeLeft,
+  ]);
 
   const decrementBreakLengthByOneMinute = () => {
     const newBreakLengthInSeconds = breakLengthInSeconds - 60;
@@ -73,73 +70,76 @@ if (timeLeft === 0) {
     }
   };
 
-    const isStarted = intervalId !== null;
-    const handleStartStopClick = () => {
-        if (isStarted) {
-         
-          clearInterval(intervalId);
-          setIntervalId(null);
-        } else {
-      
-          const newIntervalId = setInterval(() => {
-            setTimeLeft(prevTimeLeft => prevTimeLeft -1)}, 1000); // TODO: turn back into 1000
-          setIntervalId(newIntervalId);
-        }
-      };
+  const isStarted = intervalId !== null;
+  const handleStartStopClick = () => {
+    if (isStarted) {
+      clearInterval(intervalId);
+      setIntervalId(null);
+    } else {
+      const newIntervalId = setInterval(() => {
+        setTimeLeft((prevTimeLeft) => prevTimeLeft - 1);
+      }, 1000); // TODO: turn back into 1000
+      setIntervalId(newIntervalId);
+    }
+  };
 
-      const handleResetButtonClick = () => {
-        // reset audio
-        audioElement.current.load();
-        // clear the timeout interval
-        clearInterval(intervalId);
-        // set the intervalId null
-        setIntervalId(null);
-        // set the sessiontype to 'Session'
-        setCurrentSessionType('Session');
-        // reset the session length to 25 minutes
-        setSessionLengthInSeconds(60 * 25);
-        // reset the break length to 5 minutes
-        setBreakLengthInSeconds(60 * 5);
-        // reset the timer to 25 minutes (initial session length)
-        setTimeLeft(60 * 25);
-      };
+  const handleResetButtonClick = () => {
+    // reset audio
+    audioElement.current.load();
+    // clear the timeout interval
+    clearInterval(intervalId);
+    // set the intervalId null
+    setIntervalId(null);
+    // set the sessiontype to 'Session'
+    setCurrentSessionType("Session");
+    // reset the session length to 25 minutes
+    setSessionLengthInSeconds(60 * 25);
+    // reset the break length to 5 minutes
+    setBreakLengthInSeconds(60 * 5);
+    // reset the timer to 25 minutes (initial session length)
+    setTimeLeft(60 * 25);
+  };
 
   return (
-
     <div className="App">
- 
-       
-      
-       <h1 className="title">Pomdoro Clock</h1>
-  
-       
-       <a  className="credit" href="https://www.ihsen.dev/" rel="noopener noreferrer"  target="_blank">Made By Ihsen</a>
+      <div className="header">
+      <h1 className="title">The Pomdoro Clock</h1>
+<h3 className="web"><a
+  className="credit"
+  href="https://www.ihsen.dev/"
+  rel="noopener noreferrer"
+  target="_blank"
+>
+  Made By <span>Ihsen</span>
+</a></h3>
 
-        <div className="Pomodoro">
-    <Break 
-        breakLengthInSeconds={breakLengthInSeconds}
-        incrementBreakLengthByOneMinute={incrementBreakLengthByOneMinute}
-        decrementBreakLengthByOneMinute={decrementBreakLengthByOneMinute}
-      />
-      
-      <TimeLeft
-         handleResetButtonClick={handleResetButtonClick}
-        handleStartStopClick={handleStartStopClick}
-        timerLabel={currentSessionType}
-        startStopButtonLabel={isStarted ? 'Stop' : 'Start'}
-        timeLeft={timeLeft}
-      />
-   
-      
-      <Session
-        sessionLengthInSeconds={sessionLengthInSeconds}
-        incrementSessionLengthByOneMinute={incrementSessionLengthByOneMinute}
-        decrementSessionLengthByOneMinute={decrementSessionLengthByOneMinute}
-      />
-    </div>
-     
+      </div>
+    
+
+      <div className="Pomodoro">
+        <Break
+          breakLengthInSeconds={breakLengthInSeconds}
+          incrementBreakLengthByOneMinute={incrementBreakLengthByOneMinute}
+          decrementBreakLengthByOneMinute={decrementBreakLengthByOneMinute}
+        />
+
+        <TimeLeft
+          handleResetButtonClick={handleResetButtonClick}
+          handleStartStopClick={handleStartStopClick}
+          timerLabel={currentSessionType}
+          startStopButtonLabel={isStarted ? "Stop" : "Start"}
+          timeLeft={timeLeft}
+        />
+
+        <Session
+          sessionLengthInSeconds={sessionLengthInSeconds}
+          incrementSessionLengthByOneMinute={incrementSessionLengthByOneMinute}
+          decrementSessionLengthByOneMinute={decrementSessionLengthByOneMinute}
+        />
+      </div>
+
       <audio id="beep" ref={audioElement}>
-      <source src={soundfile} type="audio/wav" />
+        <source src={soundfile} type="audio/wav" />
       </audio>
     </div>
   );
